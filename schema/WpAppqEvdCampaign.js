@@ -1,5 +1,5 @@
 cube(`WpAppqEvdCampaign`, {
-  sql: `SELECT * FROM crowd_mega_prod.wp_appq_evd_campaign`,
+  sql: `SELECT * FROM crowd_appq_writer.wp_appq_evd_campaign`,
   
   joins: {
     
