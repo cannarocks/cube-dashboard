@@ -5,6 +5,10 @@ cube(`Device`, {
     Platform: {
       relationship: `hasOne`,
       sql: `${Device}.platform_id = ${Platform}.id`
+    },
+    Os: {
+      relationship: `hasOne`,
+      sql: `${Device}.os_version_id = ${Os}.id`
     }
   },
   

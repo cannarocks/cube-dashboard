@@ -2,9 +2,13 @@ cube(`PaymentAttribution`, {
   sql: `SELECT * FROM crowd_appq_writer.wp_appq_payment`,
   
   joins: {
-    Platform: {
+    AppqPaymentRequest: {
       relationship: `hasOne`,
       sql: `${PaymentAttribution}.request_id = ${AppqPaymentRequest}.id`
+    },
+    Tester: {
+      relationship: `hasOne`,
+      sql: `${PaymentAttribution}.tester_id = ${Tester}.id`
     }
   },
   
@@ -14,10 +18,29 @@ cube(`PaymentAttribution`, {
       drillMembers: [id, receiptTitle, creationDate]
     },
     
-    amount: {
+    totalAmount: {
       sql: `amount`,
-      type: `sum`
-    }
+      type: `sum`,
+      title: `Total Amount`
+    },
+
+    totalAmountPaid: {
+      sql: `amount`,
+      type: `sum`,
+      title: `Total Paid`,
+      filters: [
+        { sql: `${PaymentAttribution}.is_paid = 1` }
+      ]
+    },
+
+    totalAmountUnPaid: {
+      sql: `amount`,
+      type: `sum`,
+      title: `Total UnPaid`,
+      filters: [
+        { sql: `${PaymentAttribution}.is_paid = 0` }
+      ]
+    },
   },
   
   dimensions: {

@@ -1,22 +1,26 @@
-cube(`Testers`, {
+cube(`Tester`, {
     sql: `SELECT * FROM crowd_appq_writer.wp_appq_evd_profile`,
 
     joins: {
         Bug: {
             relationship: 'hasMany',
-            sql: `${Testers}.wp_user_id = ${Bug}.wp_user_id`
+            sql: `${Tester}.wp_user_id = ${Bug}.wp_user_id`
         },
         Device: {
             relationship: 'hasMany',
-            sql: `${Testers}.id = ${Device}.id_profile`
+            sql: `${Tester}.id = ${Device}.id_profile`
         },
         PaymentAttribution: {
             relationship: 'hasMany',
-            sql: `${Testers}.id = ${PaymentAttribution}.tester_id`
+            sql: `${Tester}.id = ${PaymentAttribution}.tester_id`
         },
         AppqPaymentRequest: {
             relationship: 'hasMany',
-            sql: `${Testers}.id = ${AppqPaymentRequest}.tester_id`
+            sql: `${Tester}.id = ${AppqPaymentRequest}.tester_id`
+        },
+        Candidate: {
+            relationship: 'hasMany',
+            sql: `${Tester}.wp_user_id = ${Candidate}.user_id`
         }
     },
 

@@ -1,5 +1,5 @@
-cube(`Platform`, {
-  sql: `SELECT * FROM crowd_appq_writer.wp_appq_evd_platform`,
+cube(`BugSeverity`, {
+  sql: `SELECT * FROM crowd_appq_writer.wp_appq_evd_severity`,
   
   joins: {
     
@@ -21,6 +21,11 @@ cube(`Platform`, {
     
     name: {
       sql: `name`,
+      type: `string`
+    },
+    
+    description: {
+      sql: `description`,
       type: `string`
     }
   }

@@ -1,8 +1,11 @@
-cube(`BugStatus`, {
-  sql: `SELECT * FROM crowd_appq_writer.wp_appq_evd_bug_status`,
+cube(`Platform`, {
+  sql: `SELECT * FROM crowd_appq_writer.wp_appq_evd_platform`,
   
   joins: {
-    
+    Device: {
+      relationship: `hasMany`,
+      sql: `${Platform}.id = ${Device}.platform_id`
+    }
   },
   
   measures: {
@@ -21,16 +24,6 @@ cube(`BugStatus`, {
     
     name: {
       sql: `name`,
-      type: `string`
-    },
-    
-    description: {
-      sql: `description`,
-      type: `string`
-    },
-    
-    icon: {
-      sql: `icon`,
       type: `string`
     }
   }

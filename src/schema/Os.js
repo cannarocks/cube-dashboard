@@ -2,7 +2,10 @@ cube(`Os`, {
   sql: `SELECT * FROM crowd_appq_writer.wp_appq_os`,
   
   joins: {
-    
+    Device: {
+      relationship: `hasMany`,
+      sql: `${Device}.os_version_id = ${Os}.id`
+    }
   },
   
   measures: {
