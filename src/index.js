@@ -1,19 +1,21 @@
-require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const CubejsServerCore = require('@cubejs-backend/server-core');
 const basicAuth = require('express-basic-auth')
- 
+const dotenv = require("dotenv");
+
 const app = express();
+dotenv.config();
+
 app.use(require('cors')());
 app.use(bodyParser.json({ limit: '50mb' }));
+
 
 const auth = basicAuth({
     users: { 'admin': 'supersecret' },
     challenge: true,
     realm: 'Imb4T3st4pp',
 })
-
 
 const protected_routes = ['/','/#/build', '/#/schema']
 

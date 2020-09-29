@@ -1,4 +1,4 @@
-cube(`WpAppqEvdBug`, {
+cube(`Bug`, {
   sql: `SELECT * FROM crowd_appq_writer.wp_appq_evd_bug`,
   
   joins: {
