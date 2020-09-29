@@ -15,7 +15,7 @@ const auth = basicAuth({
 })
 
 
-const protected_routes = ['/','/#/build']
+const protected_routes = ['/','/#/build', '/#/schema']
 
 protected_routes.forEach((route) => {
 	app.get(route, auth, (req, res, next) => { next() });
