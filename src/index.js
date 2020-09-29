@@ -10,9 +10,14 @@ dotenv.config();
 app.use(require('cors')());
 app.use(bodyParser.json({ limit: '50mb' }));
 
+var admin =  process.env.ADMIN_USER;
+var psw =  process.env.ADMIN_PSW;
+
+var user = {}
+user[admin] = psw;
 
 const auth = basicAuth({
-    users: { 'admin': 'supersecret' },
+    users: user,
     challenge: true,
     realm: 'Imb4T3st4pp',
 })
