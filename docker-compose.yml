@@ -13,7 +13,12 @@ services:
     expose:
       - "4000"
     command: node index.js
+    volumes:
+      - ./src/schema:/usr/src/app/schema
+      - ./src/package.json:/usr/src/app/package.json
+      - ./src/package-lock.json:/usr/src/app/package-lock.json
+      - ./src/index.js:/usr/src/app/index.js
     links:
       - redis_db
     ports:
-      - "80:4000"
+      - "${CUBEJS_PORT}:4000"
