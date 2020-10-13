@@ -22,3 +22,4 @@ services:
       - redis_db
     ports:
       - "${CUBEJS_PORT}:4000"
+      - 3000:3000
