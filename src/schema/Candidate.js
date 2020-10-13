@@ -17,6 +17,7 @@ cube(`Candidate`, {
       type: `count`,
       drillMembers: [subscriptionDate]
     },
+
     countSelection: {
       type: `count`,
       drillMembers: [subscriptionDate],

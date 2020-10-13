@@ -18,6 +18,7 @@ services:
       - ./src/package.json:/usr/src/app/package.json
       - ./src/package-lock.json:/usr/src/app/package-lock.json
       - ./src/index.js:/usr/src/app/index.js
+      - ./src/dashboard-app:/usr/src/app/dashboard-app
     links:
       - redis_db
     ports:
