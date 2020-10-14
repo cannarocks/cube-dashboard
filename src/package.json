@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "node index.js"
+    "dev": "cp .env dashboard-app/.env && node index.js"
   },
   "dependencies": {
     "@cubejs-backend/mysql-driver": "^0.20.0",

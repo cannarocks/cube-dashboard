@@ -26,12 +26,43 @@ const AppLayout = ({ children }) => (
   </Layout>
 );
 
-const App = ({ children }) => (
-  <CubeProvider cubejsApi={cubejsApi}>
-    <ApolloProvider client={client}>
-      <AppLayout>{children}</AppLayout>
-    </ApolloProvider>
-  </CubeProvider>
-);
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			loggedIn: (
+				localStorage.getItem('user') ==  process.env.REACT_APP_ADMIN_USER 
+				&& localStorage.getItem('pass') == process.env.REACT_APP_ADMIN_PSW
+			)
+		};
+		this.login = this.login.bind(this);
+    	this.name = React.createRef();
+    	this.pass = React.createRef();
+	}
+	
+	login() {
+		if (
+			this.name.current.value == process.env.REACT_APP_ADMIN_USER
+		 	&& this.pass.current.value == process.env.REACT_APP_ADMIN_PSW) {
+				localStorage.setItem('user', this.name.current.value);
+				localStorage.setItem('pass', this.pass.current.value);
+				this.setState({loggedIn:true})
+		}
+	}
+	render() {
+		if (!this.state.loggedIn) {
+			return <form className="login" onSubmit={this.login}>
+				<input onChange={this.setName} ref={this.name} type="text"></input>
+				<input onChange={this.setPass} ref={this.pass} type="password"></input>
+				<button>Login</button>
+			</form>
+		}
+		return <CubeProvider cubejsApi={cubejsApi}>
+		    <ApolloProvider client={client}>
+		      <AppLayout>{this.props.children}</AppLayout>
+		    </ApolloProvider>
+		  </CubeProvider>
+	}
+} 
 
 export default App;
