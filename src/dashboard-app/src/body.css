@@ -5,3 +5,7 @@ body {
 .ant-popover-disabled-compatible-wrapper {
   pointer-events: none;
 }
+
+.login {margin-top: 40px;width:20%;display: block;margin: 0 auto;}
+.login button,
+.login input {width:100%;}

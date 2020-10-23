@@ -10,8 +10,8 @@ dotenv.config();
 app.use(require('cors')());
 app.use(bodyParser.json({ limit: '50mb' }));
 
-var admin =  process.env.ADMIN_USER;
-var psw =  process.env.ADMIN_PSW;
+var admin =  process.env.REACT_APP_ADMIN_USER;
+var psw =  process.env.REACT_APP_ADMIN_PSW;
 
 var user = {}
 user[admin] = psw;
